@@ -394,10 +394,10 @@
                 CGFloat actualTimeOffset = currentActualTime - startActualFrameTime;
 
 
-                if (self.playSound && hasAudioTrack)
-                {
-                    actualTimeOffset = [audioPlayer currentTime];
-                }
+                //if (self.playSound && hasAudioTrack)
+                //{
+                //    actualTimeOffset = [audioPlayer currentTime];
+                //}
 
 
 //                if (frameTimeDifference > actualTimeDifference)
