@@ -684,7 +684,6 @@
     }
 
     if ([self.delegate respondsToSelector:@selector(didCompletePlayingMovie)]) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
         [self.delegate didCompletePlayingMovie];
     }
     
