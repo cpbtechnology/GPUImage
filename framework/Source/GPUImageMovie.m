@@ -29,7 +29,7 @@
     AVAudioPlayer *audioPlayer;
     CFAbsoluteTime startActualFrameTime;
     CGFloat currentVideoTime;
-
+    NSNotification *movieNotification;
 }
 
 - (void)processAsset;
@@ -267,6 +267,9 @@
             readerVideoTrackOutput = output;
         }
     }
+    
+    movieNotification = [NSNotification notificationWithName:@"movieStartNotification" object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:movieNotification];
 
     if ([reader startReading] == NO) 
     {
@@ -681,8 +684,10 @@
     }
 
     if ([self.delegate respondsToSelector:@selector(didCompletePlayingMovie)]) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
         [self.delegate didCompletePlayingMovie];
     }
+    
     self.delegate = nil;
 }
 
